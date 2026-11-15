@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nordleaf | Rośliny i donice na zamówienie</title>
+<meta name="description" content="Rośliny, donice na zamówienie i gotowe zestawy do mieszkań, biur i lokali. Zapytaj o ofertę.">
+<style>
+:root{--bg:#FAF7F0;--beige:#EFE6D4;--beige2:#E2D5BC;--green:#2F4F3E;--green2:#4F7A5A;--ink:#27302B;--mut:#66706A;--line:#E3DACA}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:400 1.05rem/1.75 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.2;color:var(--green)}
+img{max-width:100%;display:block}
+a{color:var(--green)}
+:focus-visible{outline:3px solid var(--green2);outline-offset:3px}
+.wrap{width:min(1120px,100% - 2.4rem);margin-inline:auto}
+section{padding:5rem 0}
+.alt{background:var(--beige)}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:.8rem}
+.lead{color:var(--mut);max-width:58ch;margin-bottom:2.2rem}
+header{position:sticky;top:0;z-index:20;background:rgba(250,247,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{font:600 1.35rem Georgia,serif;color:var(--green);text-decoration:none;letter-spacing:.02em}
+.menu{display:none;list-style:none;padding:0;gap:1.4rem}
+.menu a{text-decoration:none;color:var(--ink);font-size:.95rem}
+.menu a:hover{color:var(--green2)}
+.btn{display:inline-block;background:var(--green);color:#fff;border:0;font:500 1rem/1 inherit;padding:.95rem 1.7rem;border-radius:999px;text-decoration:none;cursor:pointer;transition:background .25s,transform .25s}
+.btn:hover{background:var(--green2);transform:translateY(-2px)}
+.btn.sm{padding:.65rem 1.2rem;font-size:.92rem}
+.btn.line{background:transparent;color:var(--green);border:1.5px solid var(--green)}
+.btn.line:hover{background:var(--green);color:#fff}
+.ph{position:relative;overflow:hidden;background:linear-gradient(145deg,#C9D6C3,#8FA88C)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero{padding:3rem 0 5rem}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:1rem}
+.hero p{color:var(--mut);max-width:48ch;margin-bottom:1.8rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero .ph{aspect-ratio:4/5;border-radius:200px 200px 24px 24px}
+.about{display:grid;gap:2.5rem;align-items:center}
+.about .ph{aspect-ratio:1;border-radius:24px;background:linear-gradient(145deg,#E2D5BC,#C7B48F)}
+.tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.tab{background:transparent;border:1.5px solid var(--beige2);color:var(--ink);border-radius:999px;padding:.55rem 1.2rem;font:inherit;font-size:.95rem;cursor:pointer;transition:all .2s}
+.tab:hover{border-color:var(--green2)}
+.tab[aria-pressed=true]{background:var(--green);border-color:var(--green);color:#fff}
+.grid{display:grid;gap:1.4rem;grid-template-columns:1fr}
+.item .ph{aspect-ratio:4/5;border-radius:18px;margin-bottom:.8rem}
+.item[data-cat=donice] .ph{background:linear-gradient(145deg,#E8DCC4,#C9B58E)}
+.item[data-cat=zestawy] .ph{background:linear-gradient(145deg,#D7DFCE,#A9B99E)}
+.item h3{font-size:1.15rem}
+.item p{color:var(--mut);font-size:.95rem}
+.item.hide{display:none}
+.steps{list-style:none;padding:0;display:grid;gap:1.6rem;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50%;border:1.5px solid var(--green);color:var(--green);font:500 1.1rem Georgia,serif;margin-bottom:.8rem}
+.steps strong{display:block;font:500 1.15rem Georgia,serif;color:var(--green);margin-bottom:.2rem}
+.steps span{color:var(--mut);font-size:.97rem}
+.contact{display:grid;gap:2.5rem}
+form{display:grid;gap:1rem;max-width:560px}
+label{display:block;font-weight:500;font-size:.92rem;margin-bottom:.3rem}
+input,textarea{width:100%;padding:.85rem 1rem;border:1.5px solid var(--beige2);border-radius:12px;background:#fff;font:inherit;color:var(--ink)}
+input[type=file]{padding:.6rem}
+input:focus,textarea:focus{border-color:var(--green2);outline:none;box-shadow:0 0 0 3px rgba(79,122,90,.2)}
+.err{color:#A12B2B;font-size:.85rem;min-height:1em;display:block}
+.check{display:flex;gap:.6rem;align-items:flex-start;font-weight:400;font-size:.9rem}
+.check input{width:auto;margin-top:.4rem;accent-color:var(--green)}
+.hint{font-size:.85rem;color:var(--mut)}
+.hp{position:absolute;left:-9999px}
+#ok{padding:1rem;border-radius:12px;background:#E5EFE3;color:var(--green);font-weight:500}
+.info p{margin-bottom:.8rem}
+footer{background:var(--green);color:#E3EBE2;padding:2.5rem 0;font-size:.92rem}
+footer a{color:#fff}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.menu{display:flex}.hero-grid{grid-template-columns:1.1fr .9fr}.about{grid-template-columns:.8fr 1.2fr}.grid{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(4,1fr)}.contact{grid-template-columns:1.2fr .8fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+ <nav class="wrap" aria-label="Główna nawigacja">
+  <a href="#top" class="brand">Nordleaf</a>
+  <ul class="menu"><li><a href="#o-nas">O nas</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#jak-zamowic">Jak zamówić</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a href="#kontakt" class="btn sm">Zapytaj o ofertę</a>
+ </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap hero-grid">
+  <div>
+   <h1>Rośliny i donice, które uspokajają wnętrze</h1>
+   <p>Dobieramy rośliny, donice na zamówienie i gotowe zestawy do mieszkań, biur i lokali. Opowiedz nam o swojej przestrzeni, a zaproponujemy rozwiązanie.</p>
+   <div class="cta"><a href="#kontakt" class="btn">Zapytaj o ofertę</a><a href="#oferta" class="btn line">Zobacz ofertę</a></div>
+  </div>
+  <!-- Zdjęcie: wrzuć plik do folderu img/ pod nazwą hero.jpg (lub zmień nazwę poniżej) -->
+  <div class="ph" role="img" aria-label="Rośliny w jasnym wnętrzu"><img src="img/hero.jpg" alt="Rośliny w jasnym wnętrzu" onerror="this.remove()"></div>
+ </div>
+</section>
+
+<section id="o-nas" class="alt">
+ <div class="wrap about">
+  <div class="ph" role="img" aria-label="Zdjęcie Nordleaf"><img src="img/o-nas.jpg" alt="Zespół Nordleaf" onerror="this.remove()"></div>
+  <div>
+   <h2>O Nordleaf</h2>
+   <!-- Tekst przykładowy, zastąp tekstem klienta -->
+   <p style="margin-bottom:1rem">Nordleaf to pracownia roślin i donic. Pomagamy wybrać zieleń do mieszkań, biur i lokali, a donice przygotowujemy na zamówienie.</p>
+   <p>Każde zamówienie traktujemy indywidualnie: dostępność, cenę i dostawę ustalamy z Tobą po rozmowie o Twojej przestrzeni.</p>
+  </div>
+ </div>
+</section>
+
+<section id="oferta">
+ <div class="wrap">
+  <h2>Oferta</h2>
+  <p class="lead">Przykładowe rośliny, donice i zestawy. Dostępność i cenę ustalamy indywidualnie.</p>
+  <div class="tabs" role="group" aria-label="Filtr oferty">
+   <button class="tab" data-f="all" aria-pressed="true">Wszystko</button>
+   <button class="tab" data-f="rosliny" aria-pressed="false">Rośliny</button>
+   <button class="tab" data-f="donice" aria-pressed="false">Donice</button>
+   <button class="tab" data-f="zestawy" aria-pressed="false">Gotowe zestawy</button>
+  </div>
+  <!-- Jak dodać pozycję: skopiuj blok <figure class="item">, zmień data-cat (rosliny / donice / zestawy), nazwę, opis i plik w img/ -->
+  <div class="grid" id="grid">
+   <figure class="item" data-cat="rosliny"><div class="ph"><img src="img/roslina-1.jpg" alt="Monstera" loading="lazy" onerror="this.remove()"></div><h3>Monstera</h3><p>Duże, rzeźbione liście. Do jasnego salonu.</p></figure>
+   <figure class="item" data-cat="rosliny"><div class="ph"><img src="img/roslina-2.jpg" alt="Zamioculcas" loading="lazy" onerror="this.remove()"></div><h3>Zamioculcas</h3><p>Odporna roślina, dobra do biura.</p></figure>
+   <figure class="item" data-cat="rosliny"><div class="ph"><img src="img/roslina-3.jpg" alt="Sansewieria" loading="lazy" onerror="this.remove()"></div><h3>Sansewieria</h3><p>Prosta forma, niewielkie wymagania.</p></figure>
+   <figure class="item" data-cat="donice"><div class="ph"><img src="img/donica-1.jpg" alt="Donica ceramiczna" loading="lazy" onerror="this.remove()"></div><h3>Donica ceramiczna</h3><p>Matowa, w kolorze piaskowym.</p></figure>
+   <figure class="item" data-cat="donice"><div class="ph"><img src="img/donica-2.jpg" alt="Donica na zamówienie" loading="lazy" onerror="this.remove()"></div><h3>Donica na zamówienie</h3><p>Wymiary i kolor dobieramy do wnętrza.</p></figure>
+   <figure class="item" data-cat="donice"><div class="ph"><img src="img/donica-3.jpg" alt="Donica wysoka" loading="lazy" onerror="this.remove()"></div><h3>Donica wysoka</h3><p>Pod większe rośliny, na podłogę.</p></figure>
+   <figure class="item" data-cat="zestawy"><div class="ph"><img src="img/zestaw-1.jpg" alt="Zestaw do salonu" loading="lazy" onerror="this.remove()"></div><h3>Zestaw do salonu</h3><p>Roślina, donica i podstawka dobrane razem.</p></figure>
+   <figure class="item" data-cat="zestawy"><div class="ph"><img src="img/zestaw-2.jpg" alt="Zestaw do biura" loading="lazy" onerror="this.remove()"></div><h3>Zestaw do biura</h3><p>Kilka roślin do przestrzeni wspólnej.</p></figure>
+   <figure class="item" data-cat="zestawy"><div class="ph"><img src="img/zestaw-3.jpg" alt="Zestaw do lokalu" loading="lazy" onerror="this.remove()"></div><h3>Zestaw do lokalu</h3><p>Zieleń dopasowana do charakteru miejsca.</p></figure>
+  </div>
+ </div>
+</section>
+
+<section id="jak-zamowic" class="alt">
+ <div class="wrap">
+  <h2>Jak zamówić</h2>
+  <p class="lead">Bez koszyka. Wszystko ustalamy z Tobą.</p>
+  <ol class="steps">
+   <li><strong>Wyślij zapytanie</strong><span>Opisz, czego szukasz, i dołącz zdjęcie wnętrza.</span></li>
+   <li><strong>Doradzimy</strong><span>Zaproponujemy rośliny, donice lub zestaw.</span></li>
+   <li><strong>Ustalamy szczegóły</strong><span>Dostępność, cenę i dostawę.</span></li>
+   <li><strong>Dostawa</strong><span>Zamówienie trafia do Ciebie w uzgodnionym terminie.</span></li>
+  </ol>
+ </div>
+</section>
+
+<section id="kontakt">
+ <div class="wrap contact">
+  <div>
+   <h2>Zapytaj o ofertę</h2>
+   <p class="lead">Napisz kilka słów o swojej przestrzeni. Odpowiemy najszybciej, jak to możliwe.</p>
+   <form name="zapytanie" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" id="form" novalidate>
+    <input type="hidden" name="form-name" value="zapytanie">
+    <p class="hp"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <div><label for="name">Imię *</label><input id="name" name="imie" autocomplete="given-name" required><span class="err" data-for="name"></span></div>
+    <div><label for="email">E-mail *</label><input id="email" name="email" type="email" autocomplete="email" required><span class="err" data-for="email"></span></div>
+    <div><label for="phone">Telefon (opcjonalnie)</label><input id="phone" name="telefon" type="tel" autocomplete="tel"></div>
+    <div><label for="msg">Wiadomość *</label><textarea id="msg" name="wiadomosc" rows="4" required></textarea><span class="err" data-for="msg"></span></div>
+    <div><label for="photo">Zdjęcie wnętrza (opcjonalnie)</label><input id="photo" name="zdjecie" type="file" accept="image/jpeg,image/png,image/webp"><span class="hint">JPG, PNG lub WebP, do 5 MB.</span><span class="err" data-for="photo"></span></div>
+    <div><label class="check"><input type="checkbox" id="rodo"><span>Zgadzam się na przetwarzanie moich danych, w tym zdjęcia, w celu odpowiedzi na zapytanie. <a href="#">Polityka prywatności</a> *</span></label><span class="err" data-for="rodo"></span></div>
+    <button class="btn" type="submit">Wyślij zapytanie</button>
+    <p id="ok" role="status" hidden></p>
+   </form>
+  </div>
+  <div class="info">
+   <h2>Kontakt</h2>
+   <!-- Dane przykładowe, zastąp danymi klienta -->
+   <p><a href="mailto:kontakt@nordleaf.example">kontakt@nordleaf.example</a></p>
+   <p><a href="tel:+48000000000">+48 000 000 000</a></p>
+   <p>[Adres lub informacja o obszarze dostaw]<br>Pon–pt 9:00–17:00</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Nordleaf. Wersja demonstracyjna, dane przykładowe.</div></footer>
+
+<script>
+(function(){
+ document.getElementById("yr").textContent=new Date().getFullYear();
+ /* filtr oferty */
+ var tabs=document.querySelectorAll(".tab"),items=document.querySelectorAll(".item");
+ tabs.forEach(function(t){t.addEventListener("click",function(){
+  tabs.forEach(function(x){x.setAttribute("aria-pressed",x===t)});
+  items.forEach(function(i){i.classList.toggle("hide",t.dataset.f!=="all"&&i.dataset.cat!==t.dataset.f)});
+ })});
+ /* formularz */
+ var f=document.getElementById("form"),ok=document.getElementById("ok");
+ function err(id,t){f.querySelector('[data-for="'+id+'"]').textContent=t||""}
+ var re=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+ f.addEventListener("submit",async function(e){
+  e.preventDefault();var v=true;
+  var n=f.imie.value.trim(),m=f.email.value.trim(),g=f.wiadomosc.value.trim(),file=f.zdjecie.files[0];
+  err("name",n?"":"Podaj imię.");if(!n)v=false;
+  err("email",re.test(m)?"":"Podaj poprawny adres e-mail.");if(!re.test(m))v=false;
+  err("msg",g?"":"Napisz kilka słów.");if(!g)v=false;
+  err("rodo",f.querySelector("#rodo").checked?"":"Zgoda jest wymagana.");if(!f.querySelector("#rodo").checked)v=false;
+  if(file&&file.size>5*1024*1024){err("photo","Zdjęcie jest za duże (maks. 5 MB).");v=false}else err("photo","");
+  if(!v)return;
+  var b=f.querySelector("button");b.disabled=true;b.textContent="Wysyłanie...";ok.hidden=true;
+  try{
+   var r=await fetch("/",{method:"POST",body:new FormData(f)});
+   if(!r.ok)throw 0;
+   f.reset();ok.textContent="Dziękujemy! Odezwiemy się najszybciej, jak to możliwe.";
+  }catch(x){ok.textContent="Nie udało się wysłać. Spróbuj ponownie lub napisz na kontakt@nordleaf.example."}
+  ok.hidden=false;b.disabled=false;b.textContent="Wyślij zapytanie";
+ });
+})();
+</script>
+</body>
+</html>
